@@ -32,7 +32,7 @@
     "test": "npm run check:hljs-pin && npm run check:keywords && npm run lint && npm run test:smoke"
   },
   "peerDependencies": {
-    "highlight.js": ">=11.9.0 <11.10.0"
+    "highlight.js": "^11.9.0"
   },
   "devDependencies": {
     "highlight.js": "11.9.0"

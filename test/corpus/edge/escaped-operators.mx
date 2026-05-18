@@ -1,0 +1,12 @@
+#!/usr/bin/env murex
+
+# Escaped operator-like tokens should not behave like operators
+out "literal \| pipe"
+out "literal \-> arrow"
+out "literal \=> generic"
+out "literal \?? null-coalesce"
+out "literal \?: elvis"
+out "literal \<~ merge"
+out "literal \~> immutable-merge"
+out "literal \&& and"
+out "literal \|| or"

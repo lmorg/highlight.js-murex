@@ -1,0 +1,40 @@
+{
+  "name": "highlightjs-murex",
+  "version": "0.1.0",
+  "description": "Third-party highlight.js language module for the Murex shell/programming language",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "highlight.js",
+    "murex",
+    "syntax-highlighting",
+    "language-module"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmorg/highlight.js-murex.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "check:hljs-pin": "node ./scripts/check-hljs-pin.js",
+    "generate:keywords": "node ./scripts/generate-keywords.js",
+    "check:keywords": "node ./scripts/generate-keywords.js",
+    "render:previews": "node ./scripts/render-previews.js",
+    "lint": "node ./scripts/lint.js",
+    "test:smoke": "node ./test/smoke.test.js",
+    "test": "npm run check:hljs-pin && npm run check:keywords && npm run lint && npm run test:smoke"
+  },
+  "peerDependencies": {
+    "highlight.js": ">=11.9.0 <11.10.0"
+  },
+  "devDependencies": {
+    "highlight.js": "11.9.0"
+  }
+}

@@ -1,0 +1,17 @@
+#!/usr/bin/env murex
+
+# Mixed shell-like statements and expression-style syntax
+set greeting "hello"
+out $greeting -> regexp s/hello/world/
+
+count = 0
+while { $count < 3 } {
+  out "idx=$count"
+  count += 1
+}
+
+if { $count >= 3 && true } {
+  out "done"
+} else {
+  err "unexpected"
+}

@@ -1,0 +1,17 @@
+#!/usr/bin/env murex
+
+# line comment
+/# block
+comment #/
+
+value = 42
+if { $value >= 10 } {
+  out "big"
+}
+
+%[1..3] -> foreach i {
+  out $i
+}
+
+out ${value}
+out <stdin> <!out> "done"

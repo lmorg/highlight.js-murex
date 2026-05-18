@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Murex Preview - github</title>
+  <style>
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: GitHub
+  Description: Light theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-light
+  Current colors taken from GitHub's CSS
+*/
+.hljs {
+  color: #24292e;
+  background: #ffffff
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: #d73a49
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: #6f42c1
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: #005cc5
+}
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: #032f62
+}
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: #e36209
+}
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: #6a737d
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: #22863a
+}
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: #24292e
+}
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: #005cc5;
+  font-weight: bold
+}
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: #735c0f
+}
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: #24292e;
+  font-style: italic
+}
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: #24292e;
+  font-weight: bold
+}
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: #22863a;
+  background-color: #f0fff4
+}
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: #b31d28;
+  background-color: #ffeef0
+}
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+  
+}
+:root {
+  --bg: #101418;
+  --panel: #161d24;
+  --text: #dce3eb;
+  --muted: #9ca9b8;
+  --border: #2a3644;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top right, #1f2a36, #101418 42%);
+  color: var(--text);
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(10, 16, 22, 0.75);
+  backdrop-filter: blur(4px);
+}
+header h1 { margin: 0 0 8px; font-size: 22px; }
+header p { margin: 0; color: var(--muted); }
+main { padding: 24px; display: grid; gap: 20px; }
+.fixture {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(16, 22, 28, 0.75);
+  padding: 16px;
+}
+.fixture h2 { margin: 0 0 12px; font-size: 16px; color: #b8c9da; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+h3 { margin: 0 0 8px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+pre {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: auto;
+  padding: 12px;
+  background: rgba(10, 15, 20, 0.8);
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Murex highlight.js preview: github</h1>
+    <p>Generated from test corpus fixtures. Use this page to review operator/comment readability and token consistency.</p>
+  </header>
+  <main>
+
+<section class="fixture">
+  <h2>basic.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+
+<span class="hljs-comment"># line comment</span>
+<span class="hljs-comment">/# block
+comment #/</span>
+
+value <span class="hljs-operator">=</span> <span class="hljs-number">42</span>
+<span class="hljs-keyword">if</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">10</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;big&quot;</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-string">%[<span class="hljs-number">1.</span><span class="hljs-number">.3</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">-&gt;</span> foreach i <span class="hljs-punctuation">{</span>
+  out <span class="hljs-variable">$i</span>
+<span class="hljs-punctuation">}</span>
+
+out <span class="hljs-subst">${value}</span>
+out <span class="hljs-operator">&lt;</span>stdin<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>!out<span class="hljs-operator">&gt;</span> <span class="hljs-string">&quot;done&quot;</span>
+</span></code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+
+# line comment
+/# block
+comment #/
+
+value = 42
+if { $value &gt;= 10 } {
+  out "big"
+}
+
+%[1..3] -&gt; foreach i {
+  out $i
+}
+
+out ${value}
+out &lt;stdin&gt; &lt;!out&gt; "done"
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>delimiters.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+
+<span class="hljs-keyword">function</span> demo <span class="hljs-punctuation">{</span>
+  value <span class="hljs-operator">=</span> <span class="hljs-string">%{
+    name: <span class="hljs-string">%(&quot;murex&quot;)</span>
+    tags: <span class="hljs-string">%[<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-string">&quot;b&quot;</span> <span class="hljs-string">%{<span class="hljs-string">&quot;nested&quot;</span>: true<span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+
+  <span class="hljs-string">%[<span class="hljs-number">1.</span><span class="hljs-number">.3</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">-&gt;</span> foreach i <span class="hljs-punctuation">{</span>
+    out <span class="hljs-string">&quot;idx=$i&quot;</span>
+  <span class="hljs-punctuation">}</span>
+
+  <span class="hljs-string">%[Monday..Sunday<span class="hljs-punctuation">]</span> <span class="hljs-operator">-&gt;</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span> <span class="hljs-variable">$.v</span> <span class="hljs-operator">=~</span> <span class="hljs-string">&quot;^S&quot;</span> <span class="hljs-operator">&amp;&amp;</span> out <span class="hljs-string">&quot;weekend: $.v&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+
+  out <span class="hljs-subst">${value}</span>
+  out <span class="hljs-subst">@{match &quot;x&quot;}</span>
+  out <span class="hljs-operator">&lt;</span>stdin<span class="hljs-operator">&gt;</span> <span class="hljs-operator">-&gt;</span> match <span class="hljs-string">&quot;foo&quot;</span>
+<span class="hljs-punctuation">}</span>
+</span></span></span></span></span></code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+
+function demo {
+  value = %{
+    name: %("murex")
+    tags: %["a" "b" %{"nested": true}]
+  }
+
+  %[1..3] -&gt; foreach i {
+    out "idx=$i"
+  }
+
+  %[Monday..Sunday] -&gt; [{ $.v =~ "^S" &amp;&amp; out "weekend: $.v" }]
+
+  out ${value}
+  out @{match "x"}
+  out &lt;stdin&gt; -&gt; match "foo"
+}
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>edge/escaped-operators.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+
+<span class="hljs-comment"># Escaped operator-like tokens should not behave like operators</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \| pipe&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \-&gt; arrow&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \=&gt; generic&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \?? null-coalesce&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \?: elvis&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \&lt;~ merge&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \~&gt; immutable-merge&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \&amp;&amp; and&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \|| or&quot;</span>
+</code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+
+# Escaped operator-like tokens should not behave like operators
+out "literal \| pipe"
+out "literal \-&gt; arrow"
+out "literal \=&gt; generic"
+out "literal \?? null-coalesce"
+out "literal \?: elvis"
+out "literal \&lt;~ merge"
+out "literal \~&gt; immutable-merge"
+out "literal \&amp;&amp; and"
+out "literal \|| or"
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>edge/mixed-statement-expression.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+
+<span class="hljs-comment"># Mixed shell-like statements and expression-style syntax</span>
+<span class="hljs-built_in">set</span> greeting <span class="hljs-string">&quot;hello&quot;</span>
+<span class="hljs-built_in">out</span> <span class="hljs-variable">$greeting</span> <span class="hljs-operator">-&gt;</span> <span class="hljs-built_in">regexp</span> s<span class="hljs-operator">/</span>hello<span class="hljs-operator">/</span>world<span class="hljs-operator">/</span>
+
+<span class="hljs-built_in">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$count</span> <span class="hljs-operator">&lt;</span> <span class="hljs-number">3</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;idx=$count&quot;</span>
+  <span class="hljs-built_in">count</span> <span class="hljs-operator">+=</span> <span class="hljs-number">1</span>
+<span class="hljs-punctuation">}</span>
+
+<span class="hljs-keyword">if</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$count</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">3</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-literal">true</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;done&quot;</span>
+<span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-built_in">err</span> <span class="hljs-string">&quot;unexpected&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+
+# Mixed shell-like statements and expression-style syntax
+set greeting "hello"
+out $greeting -&gt; regexp s/hello/world/
+
+count = 0
+while { $count &lt; 3 } {
+  out "idx=$count"
+  count += 1
+}
+
+if { $count &gt;= 3 &amp;&amp; true } {
+  out "done"
+} else {
+  err "unexpected"
+}
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>edge/unclosed.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+
+<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;unclosed string
+/%
+out &#x27;still running
+
+value = %{
+  key: &quot;</span>x<span class="hljs-string">&quot;
+
+%[1..3] -&gt; foreach i {
+  out $i
+}
+</span></code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+
+out "unclosed string
+/%
+out 'still running
+
+value = %{
+  key: "x"
+
+%[1..3] -&gt; foreach i {
+  out $i
+}
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>negative/bash.sh</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-comment">#!/usr/bin/env bash</span>
+<span class="hljs-built_in">set</span> <span class="hljs-operator">-</span>euo pipefail
+
+name<span class="hljs-operator">=</span><span class="hljs-string">&quot;world&quot;</span>
+<span class="hljs-keyword">if</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">[</span> <span class="hljs-operator">-</span>n <span class="hljs-string">&quot;${name}&quot;</span> <span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-keyword">then</span>
+  echo <span class="hljs-string">&quot;hello ${name}&quot;</span> <span class="hljs-operator">|</span> sed <span class="hljs-string">&#x27;s/world/earth/&#x27;</span>
+fi
+
+<span class="hljs-keyword">for</span> i in <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><span class="hljs-operator">;</span> do
+  printf <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&quot;$i&quot;</span>
+done
+</code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env bash
+set -euo pipefail
+
+name="world"
+if [[ -n "${name}" ]]; then
+  echo "hello ${name}" | sed 's/world/earth/'
+fi
+
+for i in 1 2 3; do
+  printf '%s\n' "$i"
+done
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>negative/sample.json</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-punctuation">{</span>
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;murex&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-string">&quot;features&quot;</span>: <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;pipes&quot;</span>, <span class="hljs-string">&quot;builders&quot;</span>, <span class="hljs-string">&quot;variables&quot;</span><span class="hljs-punctuation">]</span>,
+  <span class="hljs-string">&quot;active&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">&quot;meta&quot;</span>: <span class="hljs-punctuation">{</span>
+    <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;team&quot;</span>,
+    <span class="hljs-string">&quot;tags&quot;</span>: <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;syntax&quot;</span>, <span class="hljs-string">&quot;highlight&quot;</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>{
+  "name": "murex",
+  "version": 1,
+  "features": ["pipes", "builders", "variables"],
+  "active": true,
+  "meta": {
+    "owner": "team",
+    "tags": ["syntax", "highlight"]
+  }
+}
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
+  <h2>operators.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+
+value <span class="hljs-operator">=</span> <span class="hljs-number">10</span>
+other <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>
+
+<span class="hljs-keyword">if</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&lt;=</span> <span class="hljs-number">20</span> <span class="hljs-operator">||</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">!=</span> <span class="hljs-number">0</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;range&quot;</span>
+<span class="hljs-punctuation">}</span>
+
+result <span class="hljs-operator">=</span> <span class="hljs-variable">$other</span> <span class="hljs-operator">??</span> <span class="hljs-string">&quot;fallback&quot;</span>
+flag <span class="hljs-operator">=</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">=~</span> <span class="hljs-string">&quot;^1&quot;</span> <span class="hljs-operator">?:</span> <span class="hljs-literal">false</span>
+
+arr <span class="hljs-operator">&lt;~</span> <span class="hljs-string">%[<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><span class="hljs-punctuation">]</span>
+out <span class="hljs-string">%{<span class="hljs-string">&quot;merged&quot;</span>: true<span class="hljs-punctuation">}</span> <span class="hljs-operator">~&gt;</span> <span class="hljs-string">%{<span class="hljs-string">&quot;extra&quot;</span>: <span class="hljs-string">&quot;x&quot;</span><span class="hljs-punctuation">}</span>
+
+out <span class="hljs-string">&quot;x&quot;</span> <span class="hljs-operator">|&gt;</span> <span class="hljs-operator">/</span>tmp<span class="hljs-operator">/</span>out.txt
+out <span class="hljs-string">&quot;y&quot;</span> <span class="hljs-operator">&gt;&gt;</span> <span class="hljs-operator">/</span>tmp<span class="hljs-operator">/</span>out.txt
+</span></span></span></code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+
+value = 10
+other = null
+
+if { $value &gt;= 5 &amp;&amp; $value &lt;= 20 || $value != 0 } {
+  out "range"
+}
+
+result = $other ?? "fallback"
+flag = $value =~ "^1" ?: false
+
+arr &lt;~ %[1 2 3]
+out %{"merged": true} ~&gt; %{"extra": "x"}
+
+out "x" |&gt; /tmp/out.txt
+out "y" &gt;&gt; /tmp/out.txt
+</code></pre>
+    </div>
+  </div>
+</section>
+  </main>
+</body>
+</html>

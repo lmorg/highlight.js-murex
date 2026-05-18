@@ -1,0 +1,21 @@
+{
+  "controlFlow": [
+    "if",
+    "then",
+    "else",
+    "for",
+    "foreach",
+    "while",
+    "try",
+    "catch",
+    "function",
+    "return",
+    "break",
+    "continue",
+    "switch"
+  ],
+  "includeGeneral": [],
+  "exclude": [
+    "README"
+  ]
+}

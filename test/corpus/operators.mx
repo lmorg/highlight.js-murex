@@ -1,0 +1,17 @@
+#!/usr/bin/env murex
+
+value = 10
+other = null
+
+if { $value >= 5 && $value <= 20 || $value != 0 } {
+  out "range"
+}
+
+result = $other ?? "fallback"
+flag = $value =~ "^1" ?: false
+
+arr <~ %[1 2 3]
+out %{"merged": true} ~> %{"extra": "x"}
+
+out "x" |> /tmp/out.txt
+out "y" >> /tmp/out.txt

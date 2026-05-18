@@ -1,0 +1,12 @@
+#!/usr/bin/env murex
+
+out "unclosed string
+/%
+out 'still running
+
+value = %{
+  key: "x"
+
+%[1..3] -> foreach i {
+  out $i
+}

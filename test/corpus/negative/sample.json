@@ -1,0 +1,10 @@
+{
+  "name": "murex",
+  "version": 1,
+  "features": ["pipes", "builders", "variables"],
+  "active": true,
+  "meta": {
+    "owner": "team",
+    "tags": ["syntax", "highlight"]
+  }
+}

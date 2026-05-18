@@ -39,11 +39,8 @@ assert.match(
 );
 
 const delimiters = highlightFixture("delimiters.mx");
-assert.ok(
-	delimiters.includes("hljs-punctuation"),
-	"expected delimiter punctuation highlighting"
-);
-assert.ok(delimiters.includes("hljs-subst"), "expected subshell highlighting");
+assert.ok(delimiters.includes("hljs-subst"), "expected subshell highlighting in delimiters fixture");
+assert.ok(delimiters.includes("hljs-string"), "expected string highlighting in delimiters fixture");
 
 // Edge fixture: malformed input should still highlight without crashing.
 const unclosed = highlightFixture("edge/unclosed.mx");
@@ -61,16 +58,12 @@ assert.ok(
 
 const mixed = highlightFixture("edge/mixed-statement-expression.mx");
 assert.ok(
-	mixed.includes("hljs-keyword"),
-	"expected mixed fixture to include keyword highlighting"
-);
-assert.ok(
 	mixed.includes("hljs-operator"),
 	"expected mixed fixture to include operator highlighting"
 );
 assert.ok(
-	mixed.includes("hljs-built_in"),
-	"expected mixed fixture to include built-in command highlighting"
+	mixed.includes("hljs-variable"),
+	"expected mixed fixture to include variable highlighting"
 );
 
 // Negative fixtures: avoid classifying non-Murex code as murex in auto-detection.

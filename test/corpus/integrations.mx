@@ -1,0 +1,31 @@
+#!/usr/bin/env murex
+# Real integration examples showing flag prefixes should NOT be split
+
+# From git integration
+git branch -a --format='%(refname:strip=2)' \
+    -> [ :0 ] -> !match '*' \
+    -> regexp (s,^origin/,,)
+
+git tag --format='%(refname:strip=2)' \
+    -> regexp (s,^origin/,,)
+
+# Docker integration
+docker help -> [^Usage:..]re -> tabulate --split-comma --map
+
+# Command with long flags
+tar --extract --file=/tmp/archive.tar.gz --directory=/tmp
+find /path -name "*.txt" --type f --exec grep "pattern" {} \;
+
+# Assignment and comparison should work normally
+count = 10
+if { $count >= 5 && $count <= 20 } {
+    out "in range"
+}
+
+# But ++ should still work
+count += 1
+value++
+
+# Redirect operators
+out "result" |> /tmp/out.txt
+out "append" >> /tmp/out.txt

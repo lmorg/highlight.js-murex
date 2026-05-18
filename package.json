@@ -35,6 +35,6 @@
     "highlight.js": "^11.9.0"
   },
   "devDependencies": {
-    "highlight.js": "11.9.0"
+    "highlight.js": "^11.9.0"
   }
 }

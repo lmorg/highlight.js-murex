@@ -133,8 +133,8 @@ module.exports = function murex(hljs) {
       /\|\|/,
       // comparison
       /==/, /!=/, />=/, /<=/, /=~/, /!~/,
-      // compound assignment
-      /\+\+/, /--/, /\+=/, /-=/, /\*=/, /\/=/,
+      // compound assignment (-- removed: it's a flag prefix like --format)
+      /\+\+/, /\+=/, /-=/, /\*=/, /\/=/,
       // pipe
       /\|(?!>)/,
       // plain assignment (after all compound forms matched)

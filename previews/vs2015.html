@@ -170,17 +170,17 @@ pre {
 comment #/</span>
 
 value <span class="hljs-operator">=</span> <span class="hljs-number">42</span>
-<span class="hljs-keyword">if</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">10</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
-  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;big&quot;</span>
-<span class="hljs-punctuation">}</span>
+if { <span class="hljs-variable">$value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">10</span> } {
+  out <span class="hljs-string">&quot;big&quot;</span>
+}
 
-<span class="hljs-string">%[<span class="hljs-number">1.</span><span class="hljs-number">.3</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">-&gt;</span> foreach i <span class="hljs-punctuation">{</span>
+<span class="hljs-string">%[<span class="hljs-number">1.</span><span class="hljs-number">.3</span>]</span> <span class="hljs-operator">-&gt;</span> foreach i {
   out <span class="hljs-variable">$i</span>
-<span class="hljs-punctuation">}</span>
+}
 
 out <span class="hljs-subst">${value}</span>
-out <span class="hljs-operator">&lt;</span>stdin<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>!out<span class="hljs-operator">&gt;</span> <span class="hljs-string">&quot;done&quot;</span>
-</span></code></pre>
+out <span class="hljs-symbol">&lt;stdin&gt;</span> <span class="hljs-operator">&lt;!out&gt;</span> <span class="hljs-string">&quot;done&quot;</span>
+</code></pre>
     </div>
     <div>
       <h3>Raw Source</h3>
@@ -213,23 +213,23 @@ out &lt;stdin&gt; &lt;!out&gt; "done"
       <h3>Highlighted (murex)</h3>
       <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
 
-<span class="hljs-keyword">function</span> demo <span class="hljs-punctuation">{</span>
+function demo {
   value <span class="hljs-operator">=</span> <span class="hljs-string">%{
     name: <span class="hljs-string">%(&quot;murex&quot;)</span>
-    tags: <span class="hljs-string">%[<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-string">&quot;b&quot;</span> <span class="hljs-string">%{<span class="hljs-string">&quot;nested&quot;</span>: true<span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
-  <span class="hljs-punctuation">}</span>
+    tags: <span class="hljs-string">%[<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-string">&quot;b&quot;</span> <span class="hljs-string">%{<span class="hljs-string">&quot;nested&quot;</span>: true}</span>]</span>
+  }</span>
 
-  <span class="hljs-string">%[<span class="hljs-number">1.</span><span class="hljs-number">.3</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">-&gt;</span> foreach i <span class="hljs-punctuation">{</span>
-    out <span class="hljs-string">&quot;idx=$i&quot;</span>
-  <span class="hljs-punctuation">}</span>
+  <span class="hljs-string">%[<span class="hljs-number">1.</span><span class="hljs-number">.3</span>]</span> <span class="hljs-operator">-&gt;</span> foreach i {
+    out <span class="hljs-string">&quot;idx=<span class="hljs-variable">$i</span>&quot;</span>
+  }
 
-  <span class="hljs-string">%[Monday..Sunday<span class="hljs-punctuation">]</span> <span class="hljs-operator">-&gt;</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span> <span class="hljs-variable">$.v</span> <span class="hljs-operator">=~</span> <span class="hljs-string">&quot;^S&quot;</span> <span class="hljs-operator">&amp;&amp;</span> out <span class="hljs-string">&quot;weekend: $.v&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-string">%[Monday..Sunday]</span> <span class="hljs-operator">-&gt;</span> [{ <span class="hljs-variable">$.v</span> <span class="hljs-operator">=~</span> <span class="hljs-string">&quot;^S&quot;</span> <span class="hljs-operator">&amp;&amp;</span> out <span class="hljs-string">&quot;weekend: <span class="hljs-variable">$.v</span>&quot;</span> }]
 
   out <span class="hljs-subst">${value}</span>
   out <span class="hljs-subst">@{match &quot;x&quot;}</span>
-  out <span class="hljs-operator">&lt;</span>stdin<span class="hljs-operator">&gt;</span> <span class="hljs-operator">-&gt;</span> match <span class="hljs-string">&quot;foo&quot;</span>
-<span class="hljs-punctuation">}</span>
-</span></span></span></span></span></code></pre>
+  out <span class="hljs-symbol">&lt;stdin&gt;</span> <span class="hljs-operator">-&gt;</span> match <span class="hljs-string">&quot;foo&quot;</span>
+}
+</code></pre>
     </div>
     <div>
       <h3>Raw Source</h3>
@@ -264,15 +264,15 @@ function demo {
       <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
 
 <span class="hljs-comment"># Escaped operator-like tokens should not behave like operators</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \| pipe&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \-&gt; arrow&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \=&gt; generic&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \?? null-coalesce&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \?: elvis&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \&lt;~ merge&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \~&gt; immutable-merge&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \&amp;&amp; and&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;literal \|| or&quot;</span>
+out <span class="hljs-string">&quot;literal \| pipe&quot;</span>
+out <span class="hljs-string">&quot;literal \-&gt; arrow&quot;</span>
+out <span class="hljs-string">&quot;literal \=&gt; generic&quot;</span>
+out <span class="hljs-string">&quot;literal \?? null-coalesce&quot;</span>
+out <span class="hljs-string">&quot;literal \?: elvis&quot;</span>
+out <span class="hljs-string">&quot;literal \&lt;~ merge&quot;</span>
+out <span class="hljs-string">&quot;literal \~&gt; immutable-merge&quot;</span>
+out <span class="hljs-string">&quot;literal \&amp;&amp; and&quot;</span>
+out <span class="hljs-string">&quot;literal \|| or&quot;</span>
 </code></pre>
     </div>
     <div>
@@ -302,20 +302,20 @@ out "literal \|| or"
       <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
 
 <span class="hljs-comment"># Mixed shell-like statements and expression-style syntax</span>
-<span class="hljs-built_in">set</span> greeting <span class="hljs-string">&quot;hello&quot;</span>
-<span class="hljs-built_in">out</span> <span class="hljs-variable">$greeting</span> <span class="hljs-operator">-&gt;</span> <span class="hljs-built_in">regexp</span> s<span class="hljs-operator">/</span>hello<span class="hljs-operator">/</span>world<span class="hljs-operator">/</span>
+set greeting <span class="hljs-string">&quot;hello&quot;</span>
+out <span class="hljs-variable">$greeting</span> <span class="hljs-operator">-&gt;</span> regexp s/hello/world/
 
-<span class="hljs-built_in">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>
-<span class="hljs-keyword">while</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$count</span> <span class="hljs-operator">&lt;</span> <span class="hljs-number">3</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
-  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;idx=$count&quot;</span>
-  <span class="hljs-built_in">count</span> <span class="hljs-operator">+=</span> <span class="hljs-number">1</span>
-<span class="hljs-punctuation">}</span>
+count <span class="hljs-operator">=</span> <span class="hljs-number">0</span>
+while { <span class="hljs-variable">$count</span> &lt; <span class="hljs-number">3</span> } {
+  out <span class="hljs-string">&quot;idx=<span class="hljs-variable">$count</span>&quot;</span>
+  count <span class="hljs-operator">+=</span> <span class="hljs-number">1</span>
+}
 
-<span class="hljs-keyword">if</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$count</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">3</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-literal">true</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
-  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;done&quot;</span>
-<span class="hljs-punctuation">}</span> <span class="hljs-keyword">else</span> <span class="hljs-punctuation">{</span>
-  <span class="hljs-built_in">err</span> <span class="hljs-string">&quot;unexpected&quot;</span>
-<span class="hljs-punctuation">}</span>
+if { <span class="hljs-variable">$count</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">3</span> <span class="hljs-operator">&amp;&amp;</span> true } {
+  out <span class="hljs-string">&quot;done&quot;</span>
+} else {
+  err <span class="hljs-string">&quot;unexpected&quot;</span>
+}
 </code></pre>
     </div>
     <div>
@@ -349,7 +349,7 @@ if { $count &gt;= 3 &amp;&amp; true } {
       <h3>Highlighted (murex)</h3>
       <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
 
-<span class="hljs-built_in">out</span> <span class="hljs-string">&quot;unclosed string
+out <span class="hljs-string">&quot;unclosed string
 /%
 out &#x27;still running
 
@@ -357,7 +357,7 @@ value = %{
   key: &quot;</span>x<span class="hljs-string">&quot;
 
 %[1..3] -&gt; foreach i {
-  out $i
+  out <span class="hljs-variable">$i</span>
 }
 </span></code></pre>
     </div>
@@ -381,20 +381,96 @@ value = %{
 </section>
 
 <section class="fixture">
+  <h2>integrations.mx</h2>
+  <div class="grid">
+    <div>
+      <h3>Highlighted (murex)</h3>
+      <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
+<span class="hljs-comment"># Real integration examples showing flag prefixes should NOT be split</span>
+
+<span class="hljs-comment"># From git integration</span>
+git branch -a --format<span class="hljs-operator">=</span><span class="hljs-string">&#x27;%(refname:strip=2)&#x27;</span> \
+    <span class="hljs-operator">-&gt;</span> [ :<span class="hljs-number">0</span> ] <span class="hljs-operator">-&gt;</span> !match <span class="hljs-string">&#x27;*&#x27;</span> \
+    <span class="hljs-operator">-&gt;</span> regexp (s,^origin/,,)
+
+git tag --format<span class="hljs-operator">=</span><span class="hljs-string">&#x27;%(refname:strip=2)&#x27;</span> \
+    <span class="hljs-operator">-&gt;</span> regexp (s,^origin/,,)
+
+<span class="hljs-comment"># Docker integration</span>
+docker help <span class="hljs-operator">-&gt;</span> [^Usage:..]re <span class="hljs-operator">-&gt;</span> tabulate --split-comma --map
+
+<span class="hljs-comment"># Command with long flags</span>
+tar --extract --file<span class="hljs-operator">=</span>/tmp/archive.tar.gz --directory<span class="hljs-operator">=</span>/tmp
+find /path -name <span class="hljs-string">&quot;*.txt&quot;</span> --type f --exec grep <span class="hljs-string">&quot;pattern&quot;</span> {} \;
+
+<span class="hljs-comment"># Assignment and comparison should work normally</span>
+count <span class="hljs-operator">=</span> <span class="hljs-number">10</span>
+if { <span class="hljs-variable">$count</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-variable">$count</span> <span class="hljs-operator">&lt;=</span> <span class="hljs-number">20</span> } {
+    out <span class="hljs-string">&quot;in range&quot;</span>
+}
+
+<span class="hljs-comment"># But ++ should still work</span>
+count <span class="hljs-operator">+=</span> <span class="hljs-number">1</span>
+value<span class="hljs-operator">++</span>
+
+<span class="hljs-comment"># Redirect operators</span>
+out <span class="hljs-string">&quot;result&quot;</span> <span class="hljs-operator">|&gt;</span> /tmp/out.txt
+out <span class="hljs-string">&quot;append&quot;</span> <span class="hljs-operator">&gt;&gt;</span> /tmp/out.txt
+</code></pre>
+    </div>
+    <div>
+      <h3>Raw Source</h3>
+      <pre><code>#!/usr/bin/env murex
+# Real integration examples showing flag prefixes should NOT be split
+
+# From git integration
+git branch -a --format='%(refname:strip=2)' \
+    -&gt; [ :0 ] -&gt; !match '*' \
+    -&gt; regexp (s,^origin/,,)
+
+git tag --format='%(refname:strip=2)' \
+    -&gt; regexp (s,^origin/,,)
+
+# Docker integration
+docker help -&gt; [^Usage:..]re -&gt; tabulate --split-comma --map
+
+# Command with long flags
+tar --extract --file=/tmp/archive.tar.gz --directory=/tmp
+find /path -name "*.txt" --type f --exec grep "pattern" {} \;
+
+# Assignment and comparison should work normally
+count = 10
+if { $count &gt;= 5 &amp;&amp; $count &lt;= 20 } {
+    out "in range"
+}
+
+# But ++ should still work
+count += 1
+value++
+
+# Redirect operators
+out "result" |&gt; /tmp/out.txt
+out "append" &gt;&gt; /tmp/out.txt
+</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="fixture">
   <h2>negative/bash.sh</h2>
   <div class="grid">
     <div>
       <h3>Highlighted (murex)</h3>
       <pre><code class="hljs language-murex"><span class="hljs-comment">#!/usr/bin/env bash</span>
-<span class="hljs-built_in">set</span> <span class="hljs-operator">-</span>euo pipefail
+set -euo pipefail
 
 name<span class="hljs-operator">=</span><span class="hljs-string">&quot;world&quot;</span>
-<span class="hljs-keyword">if</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">[</span> <span class="hljs-operator">-</span>n <span class="hljs-string">&quot;${name}&quot;</span> <span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-keyword">then</span>
-  echo <span class="hljs-string">&quot;hello ${name}&quot;</span> <span class="hljs-operator">|</span> sed <span class="hljs-string">&#x27;s/world/earth/&#x27;</span>
+if [[ -n <span class="hljs-string">&quot;<span class="hljs-subst">${name}</span>&quot;</span> ]]; then
+  echo <span class="hljs-string">&quot;hello <span class="hljs-subst">${name}</span>&quot;</span> <span class="hljs-operator">|</span> sed <span class="hljs-string">&#x27;s/world/earth/&#x27;</span>
 fi
 
-<span class="hljs-keyword">for</span> i in <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><span class="hljs-operator">;</span> do
-  printf <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&quot;$i&quot;</span>
+for i in <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>; do
+  printf <span class="hljs-string">&#x27;%s\n&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$i</span>&quot;</span>
 done
 </code></pre>
     </div>
@@ -421,16 +497,16 @@ done
   <div class="grid">
     <div>
       <h3>Highlighted (murex)</h3>
-      <pre><code class="hljs language-murex"><span class="hljs-punctuation">{</span>
+      <pre><code class="hljs language-murex">{
   <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;murex&quot;</span>,
   <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-number">1</span>,
-  <span class="hljs-string">&quot;features&quot;</span>: <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;pipes&quot;</span>, <span class="hljs-string">&quot;builders&quot;</span>, <span class="hljs-string">&quot;variables&quot;</span><span class="hljs-punctuation">]</span>,
-  <span class="hljs-string">&quot;active&quot;</span>: <span class="hljs-literal">true</span>,
-  <span class="hljs-string">&quot;meta&quot;</span>: <span class="hljs-punctuation">{</span>
+  <span class="hljs-string">&quot;features&quot;</span>: [<span class="hljs-string">&quot;pipes&quot;</span>, <span class="hljs-string">&quot;builders&quot;</span>, <span class="hljs-string">&quot;variables&quot;</span>],
+  <span class="hljs-string">&quot;active&quot;</span>: true,
+  <span class="hljs-string">&quot;meta&quot;</span>: {
     <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;team&quot;</span>,
-    <span class="hljs-string">&quot;tags&quot;</span>: <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;syntax&quot;</span>, <span class="hljs-string">&quot;highlight&quot;</span><span class="hljs-punctuation">]</span>
-  <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
+    <span class="hljs-string">&quot;tags&quot;</span>: [<span class="hljs-string">&quot;syntax&quot;</span>, <span class="hljs-string">&quot;highlight&quot;</span>]
+  }
+}
 </code></pre>
     </div>
     <div>
@@ -458,21 +534,21 @@ done
       <pre><code class="hljs language-murex"><span class="hljs-meta">#!/usr/bin/env murex</span>
 
 value <span class="hljs-operator">=</span> <span class="hljs-number">10</span>
-other <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>
+other <span class="hljs-operator">=</span> null
 
-<span class="hljs-keyword">if</span> <span class="hljs-punctuation">{</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&lt;=</span> <span class="hljs-number">20</span> <span class="hljs-operator">||</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">!=</span> <span class="hljs-number">0</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">{</span>
-  <span class="hljs-built_in">out</span> <span class="hljs-string">&quot;range&quot;</span>
-<span class="hljs-punctuation">}</span>
+if { <span class="hljs-variable">$value</span> <span class="hljs-operator">&gt;=</span> <span class="hljs-number">5</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">&lt;=</span> <span class="hljs-number">20</span> <span class="hljs-operator">||</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">!=</span> <span class="hljs-number">0</span> } {
+  out <span class="hljs-string">&quot;range&quot;</span>
+}
 
 result <span class="hljs-operator">=</span> <span class="hljs-variable">$other</span> <span class="hljs-operator">??</span> <span class="hljs-string">&quot;fallback&quot;</span>
-flag <span class="hljs-operator">=</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">=~</span> <span class="hljs-string">&quot;^1&quot;</span> <span class="hljs-operator">?:</span> <span class="hljs-literal">false</span>
+flag <span class="hljs-operator">=</span> <span class="hljs-variable">$value</span> <span class="hljs-operator">=~</span> <span class="hljs-string">&quot;^1&quot;</span> <span class="hljs-operator">?:</span> false
 
-arr <span class="hljs-operator">&lt;~</span> <span class="hljs-string">%[<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><span class="hljs-punctuation">]</span>
-out <span class="hljs-string">%{<span class="hljs-string">&quot;merged&quot;</span>: true<span class="hljs-punctuation">}</span> <span class="hljs-operator">~&gt;</span> <span class="hljs-string">%{<span class="hljs-string">&quot;extra&quot;</span>: <span class="hljs-string">&quot;x&quot;</span><span class="hljs-punctuation">}</span>
+arr <span class="hljs-operator">&lt;~</span> <span class="hljs-string">%[<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>]</span>
+out <span class="hljs-string">%{<span class="hljs-string">&quot;merged&quot;</span>: true}</span> <span class="hljs-operator">~&gt;</span> <span class="hljs-string">%{<span class="hljs-string">&quot;extra&quot;</span>: <span class="hljs-string">&quot;x&quot;</span>}</span>
 
-out <span class="hljs-string">&quot;x&quot;</span> <span class="hljs-operator">|&gt;</span> <span class="hljs-operator">/</span>tmp<span class="hljs-operator">/</span>out.txt
-out <span class="hljs-string">&quot;y&quot;</span> <span class="hljs-operator">&gt;&gt;</span> <span class="hljs-operator">/</span>tmp<span class="hljs-operator">/</span>out.txt
-</span></span></span></code></pre>
+out <span class="hljs-string">&quot;x&quot;</span> <span class="hljs-operator">|&gt;</span> /tmp/out.txt
+out <span class="hljs-string">&quot;y&quot;</span> <span class="hljs-operator">&gt;&gt;</span> /tmp/out.txt
+</code></pre>
     </div>
     <div>
       <h3>Raw Source</h3>
